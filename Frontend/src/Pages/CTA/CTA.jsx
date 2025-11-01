@@ -9,9 +9,10 @@ const CTA = () => {
     const navigate = useNavigate();
     const [meet , setMeet] = useState(false);
     const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const getSeminarData = async () => {
-        const URL = "http://localhost:5000/api/seminars";
+        const URL = "http://localhost:8000/api/seminars";
 
         try {
         const response = await fetch(URL, {

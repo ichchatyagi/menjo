@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Navbar from '../Interface/Navbar'
 import Footer from '../Interface/Footer'
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 const Contact = () => {
   const [contactPayload, setContactPayload] = useState({
@@ -17,7 +18,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const URL = "http://localhost:5000/api/contact";
+    const URL = "http://localhost:8000/api/contact";
 
     try {
       const response = await fetch(URL, {

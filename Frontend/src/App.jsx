@@ -14,9 +14,11 @@ import ManageSeminars from './Pages/Admin/ManageSeminar';
 import AddSeminarDateTime from './Pages/Admin/AddSeminarDateTime';
 import ViewContacts from './Pages/Admin/ViewContacts';
 import AdminBookings from './Pages/Admin/AdminBookings';
+import { ToastContainer, toast } from 'react-toastify';
 
 const App = () => {
-  return (
+  return (<>
+    <ToastContainer />
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
@@ -35,6 +37,7 @@ const App = () => {
         <Route path='/admin/bookings' element={<AdminBookings/>} />
       </Routes>
     </ BrowserRouter>
+    </>
   )
 }
 
