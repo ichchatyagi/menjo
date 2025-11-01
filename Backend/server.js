@@ -17,22 +17,30 @@ connectDB();
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:5173",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:3000"],
+  credentials: true,
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// app.use("/api/users", userRoutes);
-// app.use("/api/contact", contactRoutes);
-// app.use("/api/auth", authRoutes);
-// app.use("/api/admin", adminRoutes);
-// app.use("/api/seminars", seminarRoutes);
-// app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
-// app.use("/api/bookings", seminarBookingRoutes);
+// Uncomment all routes to make them active
+app.use("/api/users", userRoutes);
+app.use("/api/contact", contactRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/seminars", seminarRoutes);
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+app.use("/api/bookings", seminarBookingRoutes);
 
 app.get("/", (req, res) => res.send("API is running..."));
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: err.message || "Something went wrong!" });
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
