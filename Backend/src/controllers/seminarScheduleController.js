@@ -1,57 +1,65 @@
-import pool from "../config/db.js";
+import Seminar from "../models/Seminar.js";
+import SeminarSchedule from "../models/SeminarSchedule.js";
 
 // Add one or multiple schedules
 export const addSchedules = async (req, res) => {
-  const seminar_id = parseInt(req.params.id); // convert to number
-  const { schedules } = req.body;   // array of {date, time}
+  const { id: seminar_id } = req.params;
+  const { schedules } = req.body; // array of {date, time}
 
   if (!seminar_id || !Array.isArray(schedules) || schedules.length === 0) {
-    return res.status(400).json({ error: "Seminar ID and schedules are required" });
+    return res
+      .status(400)
+      .json({ error: "Seminar ID and schedules are required" });
   }
 
   try {
-    // Build parameterized query to prevent SQL injection
-    const params = [];
-    const values = schedules.map((s, i) => {
-      params.push(seminar_id, s.date, s.time);
-      const paramIndex = i * 3;
-      return `($${paramIndex + 1}, $${paramIndex + 2}, $${paramIndex + 3})`;
+    const createdSchedules = await SeminarSchedule.insertMany(
+      schedules.map((s) => ({ ...s, seminar_id }))
+    );
+
+    res.status(201).json({
+      message: "Schedules added successfully",
+      schedules: createdSchedules,
     });
-
-    const query = `
-      INSERT INTO seminar_schedules (seminar_id, seminar_date, seminar_time)
-      VALUES ${values.join(", ")}
-      RETURNING *;
-    `;
-
-    const result = await pool.query(query, params);
-
-    res.status(201).json({ message: "Schedules added successfully", schedules: result.rows });
   } catch (err) {
     console.error("Error adding schedules:", err.message);
     res.status(500).json({ error: "Server error" });
   }
 };
 
-
 export const getSeminarsWithSchedules = async (req, res) => {
   try {
-    const result = await pool.query(`
-      SELECT s.id, s.title, s.description, s.cover_image, 
-             json_agg(
-               json_build_object(
-                 'id', sc.id,
-                 'date', sc.seminar_date,
-                 'time', sc.seminar_time
-               )
-             ) AS schedules
-      FROM seminars s
-      LEFT JOIN seminar_schedules sc ON s.id = sc.seminar_id
-      GROUP BY s.id
-      ORDER BY s.created_at DESC
-    `);
+    const seminars = await Seminar.aggregate([
+      {
+        $lookup: {
+          from: "seminarschedules",
+          localField: "_id",
+          foreignField: "seminar_id",
+          as: "schedules",
+        },
+      },
+      {
+        $project: {
+          id: "$_id",
+          title: 1,
+          description: 1,
+          cover_image: 1,
+          schedules: {
+            $map: {
+              input: "$schedules",
+              as: "schedule",
+              in: {
+                id: "$$schedule._id",
+                date: "$$schedule.seminar_date",
+                time: "$$schedule.seminar_time",
+              },
+            },
+          },
+        },
+      },
+    ]);
 
-    res.json(result.rows);
+    res.json(seminars);
   } catch (err) {
     console.error("Error fetching seminars:", err.message);
     res.status(500).json({ error: "Server error" });

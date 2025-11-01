@@ -1,4 +1,4 @@
-import pool from "../config/db.js";
+import Contact from "../models/Contact.js";
 
 // Submit Contact Form
 export const submitContactForm = async (req, res) => {
@@ -9,14 +9,11 @@ export const submitContactForm = async (req, res) => {
   }
 
   try {
-    const result = await pool.query(
-      "INSERT INTO contacts (name, email, phone, subject, message) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [name, email, phone, subject, message]
-    );
+    const contact = await Contact.create({ name, email, phone, subject, message });
 
     res.status(201).json({
       success: true,
-      data: result.rows[0],
+      data: contact,
     });
   } catch (err) {
     console.error("Error inserting form data:", err.message);
@@ -27,11 +24,9 @@ export const submitContactForm = async (req, res) => {
 // Get All Contacts
 export const getAllContacts = async (req, res) => {
   try {
-    const result = await pool.query(
-      "SELECT id, name, email, phone, subject, message, created_at FROM contacts ORDER BY created_at DESC"
-    );
+    const contacts = await Contact.find().sort({ created_at: -1 });
 
-    res.json(result.rows);
+    res.json(contacts);
   } catch (err) {
     console.error("Error fetching data:", err.message);
     res.status(500).json({ error: "Server error" });

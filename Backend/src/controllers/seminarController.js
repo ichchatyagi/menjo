@@ -1,4 +1,4 @@
-import pool from "../config/db.js";
+import Seminar from "../models/Seminar.js";
 
 // Add seminar with image
 export const addSeminar = async (req, res) => {
@@ -10,12 +10,9 @@ export const addSeminar = async (req, res) => {
   }
 
   try {
-    const result = await pool.query(
-      "INSERT INTO seminars (title, description, cover_image) VALUES ($1, $2, $3) RETURNING *",
-      [title, description, cover_image]
-    );
+    const seminar = await Seminar.create({ title, description, cover_image });
 
-    res.status(201).json({ message: "Seminar created successfully", seminar: result.rows[0] });
+    res.status(201).json({ message: "Seminar created successfully", seminar });
   } catch (err) {
     console.error("Error adding seminar:", err.message);
     res.status(500).json({ error: "Server error" });
@@ -29,16 +26,17 @@ export const editSeminar = async (req, res) => {
   const cover_image = req.file ? `/uploads/${req.file.filename}` : req.body.cover_image;
 
   try {
-    const result = await pool.query(
-      "UPDATE seminars SET title=$1, description=$2, cover_image=$3 WHERE id=$4 RETURNING *",
-      [title, description, cover_image, id]
+    const seminar = await Seminar.findByIdAndUpdate(
+      id,
+      { title, description, cover_image },
+      { new: true }
     );
 
-    if (result.rows.length === 0) {
+    if (!seminar) {
       return res.status(404).json({ error: "Seminar not found" });
     }
 
-    res.json({ message: "Seminar updated successfully", seminar: result.rows[0] });
+    res.json({ message: "Seminar updated successfully", seminar });
   } catch (err) {
     console.error("Error editing seminar:", err.message);
     res.status(500).json({ error: "Server error" });
@@ -50,9 +48,9 @@ export const deleteSeminar = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const result = await pool.query("DELETE FROM seminars WHERE id=$1 RETURNING *", [id]);
+    const seminar = await Seminar.findByIdAndDelete(id);
 
-    if (result.rows.length === 0) {
+    if (!seminar) {
       return res.status(404).json({ error: "Seminar not found" });
     }
 
