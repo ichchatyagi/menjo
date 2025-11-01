@@ -39,6 +39,26 @@ const FAQ = () => {
         {
             question: "How can I become a speaker or guest on your webinars?",
             answer: "We’re always open to expert collaborations. Please reach out through our contact form or email us."
+        },
+        {
+            question: "What kind of business tools do you provide?",
+            answer: "We provide a suite of tools to help you manage your business, including CRM software, project management boards, and financial tracking templates."
+        },
+        {
+            question: "Is there a community I can join?",
+            answer: "Yes, all our clients get access to a private online community where you can network with other business owners, share your experiences, and get support."
+        },
+        {
+            question: "What is the 'State of Art Training'?",
+            answer: "Our 'State of Art Training' is a comprehensive program that covers all aspects of starting and growing a business, from marketing and sales to finance and operations."
+        },
+        {
+            question: "How does the ongoing mentorship and coaching work?",
+            answer: "You will be paired with a dedicated mentor who will provide personalized guidance and support. You will have regular check-ins and can reach out to your mentor at any time."
+        },
+        {
+            question: "How do I get started?",
+            answer: "You can get started by signing up for one of our webinar series or by contacting us to schedule a free consultation."
         }
     ]
   return (
@@ -70,6 +90,17 @@ const FAQ = () => {
                             <li className='mb-2 text-lg'><strong>The Power of Our Systems:</strong> Discover how our tested business tools and strategies eliminate guesswork and fast-track your growth.</li>
                             <li className='mb-2 text-lg'><strong>Confidence to Convert:</strong> Learn how to turn your vision into a profitable reality with the right mindset and expert guidance.</li>
                             <li className='mb-2 text-lg'><strong>Live Q&A:</strong> Get answers to your specific questions about starting and growing your business.</li>
+                            <li className='mb-2 text-lg'><strong>Effective Marketing Strategies:</strong> Learn how to attract and retain customers with proven marketing techniques.</li>
+                            <li className='mb-2 text-lg'><strong>Sales Funnel Optimization:</strong> Master the art of creating high-converting sales funnels.</li>
+                            <li className='mb-2 text-lg'><strong>Financial Management:</strong> Understand key financial metrics and how to manage your business finances effectively.</li>
+                            <li className='mb-2 text-lg'><strong>Leadership and Team Building:</strong> Develop your leadership skills and learn how to build a high-performing team.</li>
+                            <li className='mb-2 text-lg'><strong>Time Management and Productivity:</strong> Discover strategies to manage your time effectively and increase your productivity.</li>
+                            <li className='mb-2 text-lg'><strong>Mindset for Success:</strong> Cultivate a growth mindset and overcome the mental blocks that are holding you back.</li>
+                            <li className='mb-2 text-lg'><strong>Networking and Relationship Building:</strong> Learn how to build a strong professional network.</li>
+                            <li className='mb-2 text-lg'><strong>Branding and Positioning:</strong> Define your brand and position yourself as an expert in your field.</li>
+                            <li className='mb-2 text-lg'><strong>Content Creation and Strategy:</strong> Learn how to create and distribute valuable content that attracts your target audience.</li>
+                            <li className='mb-2 text-lg'><strong>Legal and Compliance Basics:</strong> Understand the basic legal and compliance requirements for your business.</li>
+                            <li className='mb-2 text-lg'><strong>Customer Service Excellence:</strong> Learn how to provide excellent customer service and build long-term customer loyalty.</li>
                         </ul>
                     </div>
                 </div>

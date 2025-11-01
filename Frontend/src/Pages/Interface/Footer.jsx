@@ -60,7 +60,7 @@ const Footer = () => {
               <MapPin className="w-5 h-5 text-[#0f6e66]" />
               <p>
                 Our address: <br />
-                4 Dampier Ct, Endeavour Hills VIC 3802.
+                Assotech Business Cresterra,Upper Ground floor , Tower 2.Plot No 22,Sector 135, Noida, Uttar Pradesh 201301,India
               </p>
             </li>
             <li className="flex items-center gap-3 border-t border-gray-600/40 pt-4">
@@ -70,7 +70,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-3">
               <Mail className="w-5 h-5 text-[#0f6e66]" />
-              <a href="mailto:mercyandjohn@mercyandjohn.com" className="hover:text-white">mercyandjohn@mercyandjohn.com</a>
+              <a href="mailto:info@mercyandjohn.co.in" className="hover:text-white">info@mercyandjohn.co.in</a>
             </li>
           </ul>
         </div>

@@ -56,7 +56,7 @@ const Contact = () => {
           <div className='flex flex-col gap-4 justify-center items-center shadow-xl border-t-2 border-gray-100 p-10 rounded-lg'>
             <span className='border border-black p-5 rounded-full text-white bg-[#066d6d]'><MapPin size={44} /></span>
             <h2>Address</h2>
-            <p>Assotech Business Cresterra,Upper Ground floor , Tower 2.Plot No 22,Sector 135, Noida, Uttar Pradesh 201301,India</p>
+            <p>Assotech Business Cresterra,<br />Upper Ground floor,Tower 2.<br />Plot No 22,Sector 135, Noida,<br />Uttar Pradesh 201301,India</p>
           </div>
           <div className='flex flex-col gap-4 justify-center items-center shadow-xl border-t-2 border-gray-100 p-10 rounded-lg'>
             <span className='border border-black p-5 rounded-full text-white bg-[#066d6d]'><Phone size={44} /></span>
@@ -66,7 +66,7 @@ const Contact = () => {
           <div className='flex flex-col gap-4 justify-center items-center shadow-xl border-t-2 border-gray-100 p-10 rounded-lg'>
             <span className='border border-black p-5 rounded-full text-white bg-[#066d6d]'><Mail size={44} /></span>
             <h2>Email</h2>
-            <p>mercyandjohn.co.in</p>
+            <p>info@mercyandjohn.co.in</p>
           </div>
         </div>
 
@@ -131,7 +131,7 @@ const Contact = () => {
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
-            src="https://maps.google.com/maps?width=600&height=400&hl=en&q=4%20Dampier%20Ct%2C%20Endeavour%20Hills%20VIC%203802.&t=&z=14&ie=UTF8&iwloc=B&output=embed">
+            src="https://www.google.com/maps/embed/v1/place?q=Assotech%20Business%20Cresterra%2CUpper%20Ground%20floor%20%2C%20Tower%202.Plot%20No%2022%2CSector%20135%2C%20Noida%2C%20Uttar%20Pradesh%20201301%2CIndia&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8">
           </iframe>
         </div>
       </div>

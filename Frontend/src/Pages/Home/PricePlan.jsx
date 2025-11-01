@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const plans = [
   {
     name: "Business Package",
-    price: '$3000 - $1800',
+    price: '$3000 - $18000',
     icon: <Hand className="w-8 h-8 text-[#095a59]" />,
     features: [
       "Patented high-ticket commissions structure",
