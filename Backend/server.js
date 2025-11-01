@@ -16,7 +16,7 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:3000"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:3000", "https://mercyandjohn.co.in", "https://mercyandjohn.co.in/admin"],
   credentials: true,
   optionsSuccessStatus: 200,
 };
