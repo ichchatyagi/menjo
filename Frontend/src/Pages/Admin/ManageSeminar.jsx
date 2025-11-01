@@ -9,14 +9,14 @@ const ManageSeminars = () => {
   }, []);
 
   const fetchSeminars = async () => {
-    const response = await fetch("http://localhost:5000/api/seminars");
+    const response = await fetch("http://localhost:8000/api/seminars");
     const data = await response.json();
     setSeminars(data);
   };
 
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
-    await fetch(`http://localhost:5000/api/seminars/${id}`, {
+    await fetch(`http://localhost:8000/api/seminars/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });

@@ -9,7 +9,7 @@ const AddSeminarDateTime = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/seminars")
+    fetch("http://localhost:8000/api/seminars")
       .then((res) => res.json())
       .then((data) => setSeminars(data));
   }, []);
@@ -21,7 +21,7 @@ const AddSeminarDateTime = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/seminars/${seminarId}/schedule`,
+        `http://localhost:8000/api/seminars/${seminarId}/schedule`,
         {
           method: "POST",
           headers: {

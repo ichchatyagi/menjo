@@ -11,7 +11,7 @@ const BookSeminar = (props) => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/seminars")
+    fetch("http://localhost:8000/api/seminars")
       .then(res => res.json())
       .then(data => setSeminars(data));
   }, []);
@@ -25,7 +25,7 @@ const BookSeminar = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/bookings", {
+      const res = await fetch("http://localhost:8000/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ seminar_id: seminarId, schedule_id: scheduleId, name, email, phone })

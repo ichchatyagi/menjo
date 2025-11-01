@@ -6,7 +6,7 @@ const ViewContacts = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/api/admin/contacts", {
+    fetch("http://localhost:8000/api/admin/contacts", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
