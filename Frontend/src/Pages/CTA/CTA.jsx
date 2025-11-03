@@ -12,7 +12,7 @@ const CTA = () => {
     const [loading, setLoading] = useState(true);
 
     const getSeminarData = async () => {
-        const URL = "http://localhost:8000/api/seminars";
+        const URL = "https://menjo-gm0f.onrender.com/api/seminars";
 
         try {
         const response = await fetch(URL, {
@@ -47,7 +47,7 @@ const CTA = () => {
         <div className='flex flex-col relative overflow-hidden p-16'>
             {data && data.map((item, index) => (
                 <div key={index} className='flex flex-row shadow-lg bg-[#066d6d] mb-2 rounded-tr-full text-white py-16 px-6 lg:px-12 text-center'>
-                    <img src={`http://localhost:8000${item.cover_image}`} className='bg-white/50 w-96 h-96 mr-2 border border-[#E0F1DF] p-2 object-cover rounded-tl-lg rounded-bl-lg' alt="" />
+                    <img src={`https://menjo-gm0f.onrender.com${item.cover_image}`} className='bg-white/50 w-96 h-96 mr-2 border border-[#E0F1DF] p-2 object-cover rounded-tl-lg rounded-bl-lg' alt="" />
                     <div className='text-left bg-[#E0F1DF] p-9 text-black rounded-tr-full rounded-br-full'>
                         <h2 className='text-2xl md:text-3xl font-bold mb-4'>{item.title}</h2>
                         {item.schedules && (
