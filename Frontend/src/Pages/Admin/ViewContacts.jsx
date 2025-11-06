@@ -19,7 +19,7 @@ const ViewContacts = () => {
     <>
     <Navbar />
     <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6">
+      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6 overflow-x-auto">
         <h2 className="text-xl font-bold mb-4">Contact Submissions</h2>
         <table className="w-full border-collapse border">
           <thead>

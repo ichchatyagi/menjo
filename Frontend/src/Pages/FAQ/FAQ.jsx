@@ -64,7 +64,7 @@ const FAQ = () => {
   return (
     <>
         <Navbar />
-            <div className='bg-[#066d6d] p-16 shadow-lg grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6'>
+            <div className='bg-[#066d6d] p-4 md:p-16 shadow-lg grid grid-cols-1 md:grid-cols-2 gap-6'>
                 <div className='bg-[#E0F1DF]'>
                     <h1 className='text-3xl md:text-5xl font-bold leading-snug text-gray-900 p-10 text-center'>Frequently Asked Questions</h1>
                     <div className='p-10'>
