@@ -3,8 +3,11 @@ import Navbar from '../Interface/Navbar'
 import Footer from '../Interface/Footer'
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { toast } from 'react-toastify';
+import { Jelly } from 'ldrs/react'
+import 'ldrs/react/Jelly.css'
 
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
   const [contactPayload, setContactPayload] = useState({
     name: "",
     email: "",
@@ -17,7 +20,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     const URL = "http://localhost:8000/api/contact";
 
     try {
@@ -38,6 +41,7 @@ const Contact = () => {
 
       toast.success("Form submitted successfully!");
       console.log("Response:", data);
+      setLoading(false);
 
       // Reset form after success
       setContactPayload({ name: "", email: "", phone: "", subject: "", message: "" });
@@ -118,7 +122,7 @@ const Contact = () => {
                 type="submit"
                 className='py-4 px-8 bg-[#095a59] text-white font-semibold rounded-full hover:bg-[#064847] transition'
               >
-                Request Call Back
+                {loading ? <Jelly size="40" speed="0.9" color="black" /> : 'Request Call Back'}
               </button>
             </form>
           </div>

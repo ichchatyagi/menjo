@@ -10,8 +10,10 @@ const ViewContacts = () => {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
-      .then((data) => setContacts(data));
+      .then((data) => setContacts(data.data));
   }, []);
+
+  console.log(contacts, "Contacts Data");
 
   return (
     <>
@@ -29,8 +31,8 @@ const ViewContacts = () => {
             </tr>
           </thead>
           <tbody>
-            {contacts.map((c) => (
-              <tr key={c.id}>
+            {contacts && contacts.length > 0 && contacts.map((c, index) => (
+              <tr key={c._id}>
                 <td className="border p-2">{c.name}</td>
                 <td className="border p-2">{c.email}</td>
                 <td className="border p-2">{c.message}</td>
