@@ -21,7 +21,7 @@ const AddSeminarDateTime = () => {
 
     try {
       const response = await fetch(
-        `https://menjo-gm0f.onrender.com/api/seminars/${seminarId}/schedule`,
+        `https://menjo-gm0f.onrender.com/api/seminars/schedule/${seminarId}`,
         {
           method: "POST",
           headers: {

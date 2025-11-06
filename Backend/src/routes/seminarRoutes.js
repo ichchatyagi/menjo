@@ -12,7 +12,7 @@ router.put("/:id", authenticate, requireAdmin, upload.single("cover_image"), edi
 router.delete("/:id", authenticate, requireAdmin, deleteSeminar);
 
 // Admin add schedules
-router.post("/:id/schedule", authenticate, requireAdmin, addSchedules);
+router.post("/schedule/:id", authenticate, requireAdmin, addSchedules);
 
 // Public get seminars with schedules
 router.get("/", getSeminarsWithSchedules);
