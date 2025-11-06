@@ -9,7 +9,7 @@ const AddSeminarDateTime = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/seminars")
+    fetch("https://menjo-gm0f.onrender.com/api/seminars")
       .then((res) => res.json())
       .then((data) => setSeminars(data));
   }, []);
@@ -21,7 +21,7 @@ const AddSeminarDateTime = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/api/seminars/${seminarId}/schedule`,
+        `https://menjo-gm0f.onrender.com/api/seminars/${seminarId}/schedule`,
         {
           method: "POST",
           headers: {

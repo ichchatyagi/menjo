@@ -10,7 +10,7 @@ const AdminBookings = () => {
     const fetchBookings = async () => {
       try {
         const token = localStorage.getItem("token"); // Admin JWT
-        const res = await fetch("http://localhost:8000/api/bookings", {
+        const res = await fetch("https://menjo-gm0f.onrender.com/api/bookings", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,

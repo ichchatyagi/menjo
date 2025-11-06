@@ -19,7 +19,7 @@ const AddSeminar = () => {
     if (coverImage) formData.append("cover_image", coverImage);
 
     try {
-      const response = await fetch("http://localhost:8000/api/seminars", {
+      const response = await fetch("https://menjo-gm0f.onrender.com/api/seminars", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

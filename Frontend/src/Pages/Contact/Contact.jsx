@@ -21,7 +21,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const URL = "http://localhost:8000/api/contact";
+    const URL = "https://menjo-gm0f.onrender.com/api/contact";
 
     try {
       const response = await fetch(URL, {
