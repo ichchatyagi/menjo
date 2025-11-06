@@ -9,7 +9,7 @@ const HeroSection = () => {
       style={{ backgroundImage: `url(${OurVission})` }}
     >
       <div className="absolute inset-0 bg-black opacity-30"></div>
-      <div className="relative z-10 p-8 md:p-12 lg:p-16 text-white text-center w-full max-w-lg mx-auto bg-white/20 backdrop-blur-md rounded-3xl">
+      <div className="relative z-10 p-4 md:p-8 lg:p-12 text-white text-center w-full max-w-md md:max-w-lg mx-auto bg-white/20 backdrop-blur-md rounded-3xl">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6">
           Our vision is to exceed your expectations by providing innovative solutions and a steadfast commitment to your success.
         </h2>

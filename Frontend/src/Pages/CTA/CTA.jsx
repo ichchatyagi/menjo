@@ -44,11 +44,11 @@ const CTA = () => {
   return (
     <>
         <Navbar />
-        <div className='flex flex-col relative overflow-hidden p-16'>
+        <div className='flex flex-col relative overflow-hidden p-4 md:p-16'>
             {data && data.map((item, index) => (
-                <div key={index} className='flex flex-row shadow-lg bg-[#066d6d] mb-2 rounded-tr-full text-white py-16 px-6 lg:px-12 text-center'>
-                    <img src={`https://menjo-gm0f.onrender.com${item.cover_image}`} className='bg-white/50 w-96 h-96 mr-2 border border-[#E0F1DF] p-2 object-cover rounded-tl-lg rounded-bl-lg' alt="" />
-                    <div className='text-left bg-[#E0F1DF] p-9 text-black rounded-tr-full rounded-br-full'>
+                <div key={index} className='flex flex-col md:flex-row shadow-lg bg-[#066d6d] mb-2 rounded-lg text-white py-8 md:py-16 px-4 md:px-6 lg:px-12 text-center'>
+                    <img src={`https://menjo-gm0f.onrender.com${item.cover_image}`} className='bg-white/50 w-full md:w-96 h-auto md:h-96 mr-0 md:mr-2 border border-[#E0F1DF] p-2 object-cover rounded-lg' alt="" />
+                    <div className='text-left bg-[#E0F1DF] p-4 md:p-9 text-black rounded-lg mt-4 md:mt-0'>
                         <h2 className='text-2xl md:text-3xl font-bold mb-4'>{item.title}</h2>
                         {item.schedules && (
                                 <div className='mb-4'>

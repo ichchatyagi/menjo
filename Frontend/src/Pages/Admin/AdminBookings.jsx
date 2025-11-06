@@ -36,7 +36,7 @@ const AdminBookings = () => {
     <>
       <Navbar />
       <div className="min-h-screen bg-gray-100 p-6">
-        <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-6">
+        <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-6 overflow-x-auto">
           <h2 className="text-2xl font-bold mb-4">Seminar Bookings</h2>
           <table className="min-w-full border border-gray-300">
             <thead className="bg-gray-200">
