@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+import { toast } from "react-toastify";
 
 const ManageSeminars = () => {
   const [seminars, setSeminars] = useState([]);
@@ -16,11 +17,22 @@ const ManageSeminars = () => {
 
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
-    await fetch(`http://localhost:8000/api/seminars/${id}`, {
+    try {
+      const response = await fetch(`http://localhost:8000/api/seminars/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });
-    fetchSeminars();
+      fetchSeminars();
+      if(response.status !== 200){
+        toast.error("Please, delete associated Bookings first.");
+      } else {
+        toast.success("Seminar deleted successfully");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error);
+    }
+    
   };
 
   return (

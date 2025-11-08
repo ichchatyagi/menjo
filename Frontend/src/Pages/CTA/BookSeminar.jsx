@@ -74,7 +74,11 @@ const BookSeminar = (props) => {
           >
             <option value="">Select Schedule</option>
             {s.schedules.map((sc, idx) => (
-              <option key={idx} value={sc.id}>Date: {sc.date} | Time: {sc.time}</option>
+              <option key={idx} value={sc.id}>Date: {new Date(sc.date).toLocaleDateString("en-GB", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                    })} | Time: {sc.time}</option>
             ))}
           </select>
 

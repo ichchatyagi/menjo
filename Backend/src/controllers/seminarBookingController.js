@@ -43,7 +43,25 @@ export const getAllBookings = async (req, res) => {
 
     res.json(bookings);
   } catch (err) {
-    console.error("Error fetching bookings:", err.message);
     res.status(500).json({ error: "Server error" });
   }
 };
+
+// Delete a booking (for admin)
+export const deleteBooking = async (req, res) => {
+  try {
+    const booking = await SeminarBooking.findById(req.params.id);
+
+    if (!booking) {
+      return res.status(404).json({ error: "Booking not found" });
+    }
+
+    await SeminarBooking.deleteOne({ _id: req.params.id });
+
+    res.json({ message: "Booking removed" });
+  } catch (err) {
+    console.error("Error deleting booking:", err.message);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+

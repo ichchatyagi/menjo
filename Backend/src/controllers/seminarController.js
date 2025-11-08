@@ -1,4 +1,5 @@
 import Seminar from "../models/Seminar.js";
+import SeminarBooking from "../models/SeminarBooking.js";
 
 // Add seminar with image
 export const addSeminar = async (req, res) => {
@@ -48,6 +49,15 @@ export const deleteSeminar = async (req, res) => {
   const { id } = req.params;
 
   try {
+    // Check if there are any bookings for this seminar
+    const bookings = await SeminarBooking.find({ seminar_id: id });
+
+    if (bookings.length > 0) {
+      return res.status(400).json({
+        error: "Cannot delete seminar with active bookings. Please delete the bookings first.",
+      });
+    }
+
     const seminar = await Seminar.findByIdAndDelete(id);
 
     if (!seminar) {
