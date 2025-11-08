@@ -54,7 +54,7 @@ const BookSeminar = (props) => {
         <h2 className="text-center text-[#066d6d] text-2xl font-semibold mb-4">Book a Seminar</h2>
 
         {message && <p className="text-center text-[#066d6d] font-medium mb-4">{message}</p>}
-
+        {seminars.map(s => 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <select
             value={seminarId}
@@ -63,7 +63,7 @@ const BookSeminar = (props) => {
             required
           >
             <option value="">Select Seminar</option>
-            {seminars.map(s => <option key={s.id} value={s.id}>{s.title}</option>)}
+            <option key={s.id} value={s.id}>{s.title}</option>
           </select>
 
           <select
@@ -73,7 +73,7 @@ const BookSeminar = (props) => {
             required
           >
             <option value="">Select Schedule</option>
-            {schedules.map((sc, idx) => (
+            {s.schedules.map((sc, idx) => (
               <option key={idx} value={sc.id}>Date: {sc.date} | Time: {sc.time}</option>
             ))}
           </select>
@@ -108,6 +108,7 @@ const BookSeminar = (props) => {
             Book
           </button>
         </form>
+        )}
       </div>
     </div>
   );
