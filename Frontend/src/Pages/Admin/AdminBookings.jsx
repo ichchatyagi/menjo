@@ -58,9 +58,15 @@ const AdminBookings = () => {
                   <td className="py-2 px-4 border">{b.name}</td>
                   <td className="py-2 px-4 border">{b.email}</td>
                   <td className="py-2 px-4 border">{b.phone || "-"}</td>
-                  <td className="py-2 px-4 border">{b.seminar_title}</td>
-                  <td className="py-2 px-4 border">{b.seminar_date}</td>
-                  <td className="py-2 px-4 border">{b.seminar_time}</td>
+                  <td className="py-2 px-4 border">{b.seminar_id.title}</td>
+                  <td className="py-2 px-4 border">
+                    {new Date(b.seminar_schedule_id.seminar_date).toLocaleDateString("en-GB", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </td>
+                  <td className="py-2 px-4 border">{b.seminar_schedule_id.seminar_time}</td>
                   <td className="py-2 px-4 border">{new Date(b.created_at).toLocaleString()}</td>
                 </tr>
               ))}

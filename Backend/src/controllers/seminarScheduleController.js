@@ -12,9 +12,13 @@ export const addSchedules = async (req, res) => {
       .json({ error: "Seminar ID and schedules are required" });
   }
 
-  try {
+    try {
     const createdSchedules = await SeminarSchedule.insertMany(
-      schedules.map((s) => ({ ...s, seminar_id }))
+            schedules.map((s) => ({
+        seminar_id,
+        seminar_date: s.date,
+        seminar_time: s.time,
+      }))
     );
 
     res.status(201).json({
